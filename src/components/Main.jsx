@@ -5,6 +5,12 @@ import ImageCard from './ImageCard';
 import '../styles/Main.css';
 
 const Main = ({ data, history }) => {
+  const breakpointColumnsObj = {
+    default: 4,
+    1380: 3,
+    1000: 2,
+    800: 1,
+  };
   const imageList = [];
   if (data !== null) {
     data.forEach((image) => {
@@ -16,7 +22,7 @@ const Main = ({ data, history }) => {
       <Container>
         <h1 className="h2 mb-4">{history[0] && history[0]}</h1>
         <Masonry
-          breakpointCols={4}
+          breakpointCols={breakpointColumnsObj}
           className="my-masonry-grid"
           columnClassName="my-masonry-grid_column"
         >
