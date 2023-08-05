@@ -1,0 +1,55 @@
+:root {
+  --color-grey-light: rgb(222, 226, 230);
+  --color-grey-light-2: rgb(248, 249, 250);
+  --color-beige: #fff9ec;
+}
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+html {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+}
+body {
+  font-family: sans-serif;
+  line-height: 1.6;
+  width: 100%;
+  height: 100%;
+}
+#root {
+  width: 100%;
+  height: 100%;
+}
+.App {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+a:hover {
+  color: inherit;
+}
+span {
+  background-color: inherit !important;
+  border-color: var(--color-grey-light) !important;
+  color: inherit !important;
+}
+.card {
+  border-radius: 2px !important;
+}
+.card-img-top {
+  border-top-right-radius: 2px !important;
+  border-top-left-radius: 2px !important;
+}
+input,
+button {
+  border-radius: 2px !important;
+}
