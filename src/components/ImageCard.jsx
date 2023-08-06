@@ -1,10 +1,15 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
+import '../styles/ImageCard.css';
 
 const ImageCard = ({ image }) => {
   return (
-    <Card style={{ minWidth: '18rem' }}>
-      <Card.Img variant="top" src={image.urls.small} />
+    <Card className="ImageCard">
+      <Card.Img
+        variant="top"
+        src={image.urls.small}
+        className="ImageCard__img"
+      />
       <Card.Body>
         <Card.Text>
           <a

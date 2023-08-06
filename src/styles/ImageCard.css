@@ -1,0 +1,10 @@
+.ImageCard {
+  overflow: hidden;
+}
+.ImageCard:hover .ImageCard__img {
+  transform: scale(1.05);
+  filter: grayscale(100%);
+}
+.ImageCard__img {
+  transition: all 1s ease-out;
+}
