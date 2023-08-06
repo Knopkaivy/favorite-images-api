@@ -39,6 +39,14 @@ const Header = ({ fetchRandom, fetchResults }) => {
           <Button variant="light" onClick={fetchRandom}>
             Random
           </Button>
+          <Button
+            variant="light"
+            onClick={() =>
+              alert('our dev team is working on adding logic for this action')
+            }
+          >
+            Favorite
+          </Button>
         </Form>
       </Container>
     </Navbar>
