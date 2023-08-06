@@ -3,9 +3,8 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Navbar from 'react-bootstrap/Navbar';
-import History from './History';
 
-const Header = ({ addToHistory, fetchRandom, fetchResults, history }) => {
+const Header = ({ fetchRandom, fetchResults }) => {
   const [inputVal, setInputVal] = useState('');
 
   const handleInputChange = (e) => {
@@ -16,7 +15,6 @@ const Header = ({ addToHistory, fetchRandom, fetchResults, history }) => {
     if (inputVal !== '') {
       const inputString = inputVal.toString();
       fetchResults(inputString);
-      addToHistory(inputString);
       setInputVal('');
     }
     return;
@@ -41,12 +39,6 @@ const Header = ({ addToHistory, fetchRandom, fetchResults, history }) => {
           <Button variant="light" onClick={fetchRandom}>
             Random
           </Button>
-          <History
-            placement="end"
-            name="History"
-            scroll={true}
-            history={history}
-          />
         </Form>
       </Container>
     </Navbar>

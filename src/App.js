@@ -12,7 +12,6 @@ const api = createApi({
 
 function App() {
   const [data, setPhotosResponse] = useState(null);
-  const [history, setHistory] = useState([]);
   const random = [
     'Ukraine',
     'Kyiv',
@@ -41,22 +40,9 @@ function App() {
       });
   };
 
-  const addToHistory = (str) => {
-    const newHist = [...history];
-    if (history[0] && history[0] === str) {
-      return;
-    }
-    if (newHist.length >= 10) {
-      newHist.pop();
-    }
-    setHistory([str, ...newHist]);
-    return;
-  };
-
   const fetchRandom = () => {
     const i = Math.floor(Math.random() * random.length);
     const q = random[i];
-    addToHistory(q);
     fetchResults(q);
   };
 
@@ -65,21 +51,14 @@ function App() {
   }, []);
 
   const pageChange = (p) => {
-    if (history[0]) {
-      fetchResults(history[0], p);
-    }
+    // TODO - removed logic with history, need to add new logic
     return;
   };
 
   return (
     <div className="App">
-      <Header
-        addToHistory={addToHistory}
-        fetchRandom={fetchRandom}
-        fetchResults={fetchResults}
-        history={history}
-      />
-      <Main data={data} history={history} />
+      <Header fetchRandom={fetchRandom} fetchResults={fetchResults} />
+      <Main data={data} />
       <Footer pageChange={pageChange} />
     </div>
   );
