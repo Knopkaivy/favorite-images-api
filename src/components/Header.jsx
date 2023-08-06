@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
@@ -23,7 +24,9 @@ const Header = ({ fetchRandom, fetchResults }) => {
   return (
     <Navbar bg="light" expand="lg" fixed="top">
       <Container>
-        <Navbar.Brand href="">Favorite Images API</Navbar.Brand>
+        <Navbar.Brand href="">
+          <Link to={`/`}>Favorite Images API</Link>
+        </Navbar.Brand>
         <Form className="d-flex" onSubmit={(e) => handleSubmit(e)}>
           <Form.Control
             type="search"
@@ -39,13 +42,8 @@ const Header = ({ fetchRandom, fetchResults }) => {
           <Button variant="light" onClick={fetchRandom}>
             Random
           </Button>
-          <Button
-            variant="light"
-            onClick={() =>
-              alert('our dev team is working on adding logic for this action')
-            }
-          >
-            Favorite
+          <Button variant="light">
+            <Link to={`favorite`}>Favorite</Link>
           </Button>
         </Form>
       </Container>
