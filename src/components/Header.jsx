@@ -23,7 +23,7 @@ const Header = ({ fetchRandom, fetchResults }) => {
   return (
     <Navbar bg="light" expand="lg" fixed="top">
       <Container>
-        <Navbar.Brand href="">Image Search API</Navbar.Brand>
+        <Navbar.Brand href="">Favorite Images API</Navbar.Brand>
         <Form className="d-flex" onSubmit={(e) => handleSubmit(e)}>
           <Form.Control
             type="search"
