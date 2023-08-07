@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useReducer } from 'react';
+import { starterArr } from './starterSearch';
 
 const SearchContext = createContext(null);
 const SearchDispatchContext = createContext(null);
@@ -46,18 +47,3 @@ function searchReducer(search, action) {
 
 // TODO: random search value from arr
 const initialSearch = ['Dnipro'];
-const starterArr = [
-  'Ukraine',
-  'Kyiv',
-  'Lviv',
-  'Dnipro',
-  'Oregon',
-  'Switzerland',
-  'Paris',
-  'France',
-  'Colorado',
-  'Alaska',
-  'Key West',
-  'San Francisco',
-  'Germany',
-];

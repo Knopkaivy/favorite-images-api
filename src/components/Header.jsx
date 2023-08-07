@@ -5,6 +5,7 @@ import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Navbar from 'react-bootstrap/Navbar';
 import { useSearch, useSearchDispatch } from '../SearchContext';
+import { starterArr } from '../starterSearch';
 
 const Header = () => {
   const [inputVal, setInputVal] = useState('');
@@ -22,6 +23,12 @@ const Header = () => {
       dispatch({ type: 'updated', text: inputString });
     }
     return;
+  };
+
+  const handleRandomSearch = () => {
+    const randomIndex = Math.floor(Math.random() * starterArr.length);
+    const randomVal = starterArr[randomIndex];
+    dispatch({ type: 'updated', text: randomVal });
   };
 
   return (
@@ -42,12 +49,7 @@ const Header = () => {
           <Button variant="light" onClick={(e) => handleSubmit(e)}>
             Search
           </Button>
-          <Button
-            variant="light"
-            onClick={() => {
-              alert('supposed to fetch random');
-            }}
-          >
+          <Button variant="light" onClick={handleRandomSearch}>
             Random
           </Button>
           <Button variant="light">

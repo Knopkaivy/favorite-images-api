@@ -1,0 +1,15 @@
+export const starterArr = [
+  'Ukraine',
+  'Kyiv',
+  'Lviv',
+  'Dnipro',
+  'Oregon',
+  'Switzerland',
+  'Paris',
+  'France',
+  'Colorado',
+  'Alaska',
+  'Key West',
+  'San Francisco',
+  'Germany',
+];
