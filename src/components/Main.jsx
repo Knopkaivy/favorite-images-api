@@ -4,6 +4,8 @@ import { useSearch } from '../SearchContext';
 import Container from 'react-bootstrap/Container';
 import Masonry from 'react-masonry-css';
 import ImageCard from './ImageCard';
+import { breakpointColumnsObj } from '../masonryBreakPoints';
+import '../styles/masonry.css';
 import '../styles/Main.css';
 
 const api = createApi({
@@ -11,30 +13,7 @@ const api = createApi({
 });
 
 const Main = () => {
-  const breakpointColumnsObj = {
-    default: 4,
-    1380: 3,
-    1000: 2,
-    800: 1,
-  };
-
   const [data, setPhotosResponse] = useState(null);
-  const random = [
-    'Ukraine',
-    'Kyiv',
-    'Lviv',
-    'Dnipro',
-    'Oregon',
-    'Switzerland',
-    'Paris',
-    'France',
-    'Colorado',
-    'Alaska',
-    'Key West',
-    'San Francisco',
-    'Germany',
-  ];
-
   const search = useSearch();
   const fetchResults = async (q, p = 1) => {
     return await api.search
@@ -46,12 +25,6 @@ const Main = () => {
         console.log('something went wrong!');
         console.error(err);
       });
-  };
-
-  const fetchRandom = () => {
-    const i = Math.floor(Math.random() * random.length);
-    const q = random[i];
-    fetchResults(q);
   };
 
   useEffect(() => {

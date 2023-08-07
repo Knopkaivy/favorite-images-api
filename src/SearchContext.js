@@ -44,6 +44,3 @@ function searchReducer(search, action) {
     }
   }
 }
-
-// TODO: random search value from arr
-const initialSearch = ['Dnipro'];
