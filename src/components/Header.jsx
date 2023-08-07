@@ -4,9 +4,12 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Navbar from 'react-bootstrap/Navbar';
+import { useSearch, useSearchDispatch } from '../SearchContext';
 
-const Header = ({ fetchRandom, fetchResults }) => {
+const Header = () => {
   const [inputVal, setInputVal] = useState('');
+  const search = useSearch();
+  const dispatch = useSearchDispatch();
 
   const handleInputChange = (e) => {
     setInputVal(e.target.value);
@@ -15,8 +18,8 @@ const Header = ({ fetchRandom, fetchResults }) => {
     e.preventDefault();
     if (inputVal !== '') {
       const inputString = inputVal.toString();
-      fetchResults(inputString);
       setInputVal('');
+      dispatch({ type: 'updated', text: inputString });
     }
     return;
   };
@@ -39,7 +42,12 @@ const Header = ({ fetchRandom, fetchResults }) => {
           <Button variant="light" onClick={(e) => handleSubmit(e)}>
             Search
           </Button>
-          <Button variant="light" onClick={fetchRandom}>
+          <Button
+            variant="light"
+            onClick={() => {
+              alert('supposed to fetch random');
+            }}
+          >
             Random
           </Button>
           <Button variant="light">
