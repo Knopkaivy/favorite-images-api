@@ -54,10 +54,6 @@ const Main = () => {
     fetchResults(q);
   };
 
-  // useEffect(() => {
-  //   fetchResults(search);
-  // }, []);
-
   useEffect(() => {
     fetchResults(search);
   }, [search]);
