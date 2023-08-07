@@ -33,7 +33,7 @@ function favoriteReducer(favorite, action) {
       return [...favorite, action.image];
     }
     case 'removed': {
-      return;
+      return favorite.filter((image) => image.id !== action.image.id);
     }
     default: {
       throw Error(`Unknown action: ${action.type}`);
