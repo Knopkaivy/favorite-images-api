@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Navbar from 'react-bootstrap/Navbar';
-import { useSearch, useSearchDispatch } from '../SearchContext';
+import { useSearchDispatch } from '../SearchContext';
 import { starterArr } from '../starterSearch';
 
 const Header = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
   const [inputVal, setInputVal] = useState('');
-  const search = useSearch();
   const dispatch = useSearchDispatch();
 
   const handleInputChange = (e) => {
@@ -21,6 +23,9 @@ const Header = () => {
       const inputString = inputVal.toString();
       setInputVal('');
       dispatch({ type: 'updated', text: inputString });
+      if (location.pathname.includes('favorite')) {
+        navigate('/');
+      }
     }
     return;
   };
@@ -29,6 +34,9 @@ const Header = () => {
     const randomIndex = Math.floor(Math.random() * starterArr.length);
     const randomVal = starterArr[randomIndex];
     dispatch({ type: 'updated', text: randomVal });
+    if (location.pathname.includes('favorite')) {
+      navigate('/');
+    }
   };
 
   return (
