@@ -1,22 +1,31 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
-import { FaPlus } from 'react-icons/fa';
-import { FiTrash } from 'react-icons/fi';
+import { FaCheck, FaPlus } from 'react-icons/fa';
+import { IoClose } from 'react-icons/io5';
 import { useFavoriteDispatch } from '../FavoriteContext';
 import '../styles/ImageCard.css';
 
 const ImageCard = ({ image }) => {
+  const [done, setDone] = useState(false);
   const location = useLocation();
   const dispatchFavorite = useFavoriteDispatch();
+
+  useEffect(() => {
+    if (done) {
+      setTimeout(() => {
+        setDone(false);
+      }, 1000);
+    }
+  }, [done]);
   const handleAddFavorite = () => {
     dispatchFavorite({ type: 'added', image });
-    alert('added image to favorites');
+    setDone(true);
   };
   const handleRemoveFavorite = () => {
-    // TODO: add prompt confirmation to proceed
-    window.confirm('Proceed to remove?');
+    window.confirm('Remove image from Favorite?');
     dispatchFavorite({ type: 'removed', image });
+    setDone(true);
   };
   return (
     <Card className="ImageCard">
@@ -24,11 +33,11 @@ const ImageCard = ({ image }) => {
       <div className="ImageCard__btnContainer">
         {location.pathname.includes('favorite') ? (
           <button className="ImageCard__btn" onClick={handleRemoveFavorite}>
-            <FiTrash color="white" />
+            <IoClose color="white" />
           </button>
         ) : (
           <button className="ImageCard__btn" onClick={handleAddFavorite}>
-            <FaPlus color="white" />
+            {done ? <FaCheck color="white" /> : <FaPlus color="white" />}
           </button>
         )}
       </div>

@@ -1,6 +1,5 @@
 export const starterArr = [
   'Lviv',
-  'Dnipro',
   'Oregon',
   'Cannon Beach',
   'Paris',
