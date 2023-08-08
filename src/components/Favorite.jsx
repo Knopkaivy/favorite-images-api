@@ -1,5 +1,5 @@
 import React from 'react';
-import { useFavorite, useFavoriteDispatch } from '../FavoriteContext';
+import { useFavorite } from '../FavoriteContext';
 import Container from 'react-bootstrap/Container';
 import Masonry from 'react-masonry-css';
 import ImageCard from './ImageCard';

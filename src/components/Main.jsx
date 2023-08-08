@@ -31,10 +31,10 @@ const Main = () => {
     fetchResults(search);
   }, [search]);
 
-  const pageChange = (p) => {
-    // TODO - removed logic with history, need to add new logic
-    return;
-  };
+  // const pageChange = (p) => {
+  // TODO - removed logic with history, need to add new logic
+  //   return;
+  // };
 
   const imageList = [];
   if (data !== null) {

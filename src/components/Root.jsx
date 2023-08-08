@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  createBrowserRouter,
-  Link,
-  Route,
-  RouterProvider,
-  Routes,
-  Outlet,
-} from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import { SearchProvider } from '../SearchContext';
 import { FavoriteProvider } from '../FavoriteContext';
 import Header from './Header';

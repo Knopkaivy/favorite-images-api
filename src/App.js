@@ -1,15 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { createApi } from 'unsplash-js';
-import {
-  createBrowserRouter,
-  Link,
-  Route,
-  RouterProvider,
-  Routes,
-  Outlet,
-} from 'react-router-dom';
+import React from 'react';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import ErrorPage from './error-page';
-import { SearchProvider } from './SearchContext';
 import Root from './components/Root';
 import Main from './components/Main';
 import Favorite from './components/Favorite';
