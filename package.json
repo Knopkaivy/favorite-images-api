@@ -16,6 +16,7 @@
     "react-scripts": "^2.1.3",
     "react-use": "^17.4.0",
     "unsplash-js": "^7.0.15",
+    "uuidv4": "^6.2.13",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
