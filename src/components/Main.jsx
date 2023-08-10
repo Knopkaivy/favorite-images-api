@@ -25,7 +25,6 @@ const Main = () => {
   const fetchResults = async (q, action, p = page) => {
     setIsLoading(true);
     setError(null);
-    console.log('from fetchResults, page:', page);
     try {
       const response = await api.search.getPhotos({
         query: q,
