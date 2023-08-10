@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { createApi } from 'unsplash-js';
+import { v4 as uuidv4 } from 'uuid';
 import { useSearch } from '../SearchContext';
 import Container from 'react-bootstrap/Container';
 import Masonry from 'react-masonry-css';
@@ -13,33 +14,70 @@ const api = createApi({
 });
 
 const Main = () => {
-  const [data, setPhotosResponse] = useState(null);
+  const observerTarget = useRef(null);
+  const [data, setPhotosResponse] = useState([]);
+  const [page, setPage] = useState(1);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
   const search = useSearch();
-  const fetchResults = async (q, p = 1) => {
-    return await api.search
-      .getPhotos({ query: q, page: p, perPage: 20 })
-      .then((result) => {
-        setPhotosResponse(result.response.results);
-      })
-      .catch((err) => {
-        console.log('something went wrong!');
-        console.error(err);
+  const perPage = 20;
+
+  const fetchResults = async (q, action, p = page) => {
+    setIsLoading(true);
+    setError(null);
+    console.log('from fetchResults, page:', page);
+    try {
+      const response = await api.search.getPhotos({
+        query: q,
+        page: p,
+        perPage,
       });
+      const responseData = response.response.results;
+      if (action === 'add') {
+        setPhotosResponse((prevItems) => [...prevItems, ...responseData]);
+      } else {
+        setPhotosResponse([...responseData]);
+      }
+    } catch (error) {
+      setError(error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   useEffect(() => {
-    fetchResults(search);
+    setPage(Math.floor(data.length / perPage) + 1);
+  }, [data]);
+
+  useEffect(() => {
+    fetchResults(search, 'new', 1);
   }, [search]);
 
-  // const pageChange = (p) => {
-  // TODO - removed logic with history, need to add new logic
-  //   return;
-  // };
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          fetchResults(search, 'add');
+        }
+      },
+      { threshold: 1 }
+    );
+
+    if (observerTarget.current) {
+      observer.observe(observerTarget.current);
+    }
+
+    return () => {
+      if (observerTarget.current) {
+        observer.unobserve(observerTarget.current);
+      }
+    };
+  }, [observerTarget, data]);
 
   const imageList = [];
-  if (data !== null) {
+  if (data.length > 0) {
     data.forEach((image) => {
-      imageList.push(<ImageCard key={image.id} image={image} />);
+      imageList.push(<ImageCard key={uuidv4()} image={image} />);
     });
   }
   return (
@@ -53,6 +91,9 @@ const Main = () => {
         >
           {imageList}
         </Masonry>
+        <div ref={observerTarget}></div>
+        {isLoading && <p>Loading...</p>}
+        {error && <p>Error: {error.message}</p>}
       </Container>
     </div>
   );
