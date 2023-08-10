@@ -18,11 +18,13 @@ const ImageCard = ({ image }) => {
       }, 1000);
     }
   }, [done]);
-  const handleAddFavorite = () => {
+  const handleAddFavorite = (event) => {
+    event.stopPropagation();
     dispatchFavorite({ type: 'added', image });
     setDone(true);
   };
-  const handleRemoveFavorite = () => {
+  const handleRemoveFavorite = (event) => {
+    event.stopPropagation();
     window.confirm('Remove image from Favorite?');
     dispatchFavorite({ type: 'removed', image });
     setDone(true);
@@ -32,32 +34,36 @@ const ImageCard = ({ image }) => {
       <div className="ImageCard__overlay"></div>
       <div className="ImageCard__btnContainer">
         {location.pathname.includes('favorite') ? (
-          <button className="ImageCard__btn" onClick={handleRemoveFavorite}>
+          <button
+            className="ImageCard__btn"
+            onClick={(e) => handleRemoveFavorite(e)}
+          >
             <IoClose color="white" />
           </button>
         ) : (
-          <button className="ImageCard__btn" onClick={handleAddFavorite}>
+          <button
+            className="ImageCard__btn"
+            onClick={(e) => handleAddFavorite(e)}
+          >
             {done ? <FaCheck color="white" /> : <FaPlus color="white" />}
           </button>
         )}
       </div>
-      <Card.Img
-        variant="top"
-        src={image.urls.small}
-        className="ImageCard__img"
-      />
-      <Card.Body className="ImageCard__body">
-        <Card.Text>
-          <a
-            href={image.links.html}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="stretched-link"
-          >
-            {image.description || image.alt_description}
-          </a>
-        </Card.Text>
-      </Card.Body>
+      <a
+        href={image.links.html}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="stretched-link"
+      >
+        <Card.Img
+          variant="top"
+          src={image.urls.small}
+          className="ImageCard__img"
+        />
+        <Card.Body className="ImageCard__body">
+          <Card.Text>{image.description || image.alt_description}</Card.Text>
+        </Card.Body>
+      </a>
     </Card>
   );
 };
