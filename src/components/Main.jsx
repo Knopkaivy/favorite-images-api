@@ -89,8 +89,8 @@ const Main = () => {
           columnClassName="my-masonry-grid_column"
         >
           {imageList}
+          <div ref={observerTarget}></div>
         </Masonry>
-        <div ref={observerTarget}></div>
         {isLoading && <p>Loading...</p>}
         {error && <p>Error: {error.message}</p>}
       </Container>
