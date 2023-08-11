@@ -5,7 +5,6 @@ import { FavoriteProvider } from '../FavoriteContext';
 import Header from './Header';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/App.css';
-import Footer from './Footer';
 
 const Root = () => {
   return (
@@ -14,7 +13,6 @@ const Root = () => {
         <FavoriteProvider>
           <Header />
           <Outlet />
-          <Footer />
         </FavoriteProvider>
       </SearchProvider>
     </div>
