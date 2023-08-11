@@ -91,7 +91,7 @@ const Main = () => {
           {imageList}
           <div ref={observerTarget}></div>
         </Masonry>
-        {isLoading && <p>Loading...</p>}
+        {isLoading && <p className="Main__loader">Loading...</p>}
         {error && <p>Error: {error.message}</p>}
       </Container>
     </div>

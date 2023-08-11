@@ -10,6 +10,10 @@
   padding: 0;
   box-sizing: inherit;
 }
+*:focus {
+  outline: 4px solid #f15906 !important;
+}
+
 html {
   box-sizing: border-box;
   width: 100%;

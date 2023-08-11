@@ -30,22 +30,28 @@ const ImageCard = ({ image }) => {
     setDone(true);
   };
   return (
-    <Card className="ImageCard">
-      <div className="ImageCard__overlay"></div>
+    <Card className="ImageCard" tabIndex={0} aria-label="image card">
+      <div className="ImageCard__overlay" aria-hidden="true"></div>
       <div className="ImageCard__btnContainer">
         {location.pathname.includes('favorite') ? (
           <button
             className="ImageCard__btn"
             onClick={(e) => handleRemoveFavorite(e)}
+            aria-label="remove this image from favorite"
           >
-            <IoClose color="white" />
+            <IoClose color="white" aria-hidden="true" />
           </button>
         ) : (
           <button
             className="ImageCard__btn"
             onClick={(e) => handleAddFavorite(e)}
+            aria-label="add this image to favorite"
           >
-            {done ? <FaCheck color="white" /> : <FaPlus color="white" />}
+            {done ? (
+              <FaCheck color="white" aria-hidden="true" />
+            ) : (
+              <FaPlus color="white" aria-hidden="true" />
+            )}
           </button>
         )}
       </div>
@@ -54,14 +60,18 @@ const ImageCard = ({ image }) => {
         target="_blank"
         rel="noopener noreferrer"
         className="stretched-link"
+        aria-label="open home location of image on Unsplash.com in a new tab"
       >
         <Card.Img
           variant="top"
           src={image.urls.small}
           className="ImageCard__img"
+          alt={image.alt_description}
         />
-        <Card.Body className="ImageCard__body">
-          <Card.Text>{image.description || image.alt_description}</Card.Text>
+        <Card.Body className="ImageCard__body" aria-hidden="true">
+          <Card.Text className="ImageCard__description">
+            {image.description || image.alt_description}
+          </Card.Text>
         </Card.Body>
       </a>
     </Card>

@@ -42,9 +42,11 @@ const Header = () => {
   return (
     <Navbar bg="light" expand="lg" fixed="top">
       <Container>
-        <Navbar.Brand href="">
-          <Link to={`/`}>Favorite Images API</Link>
-        </Navbar.Brand>
+        {/* <Navbar.Brand href=""> */}
+        <Link to={`/`} className="navbar-brand px-2">
+          Favorite Images API
+        </Link>
+        {/* </Navbar.Brand>/ */}
         <Form className="d-flex" onSubmit={(e) => handleSubmit(e)}>
           <Form.Control
             type="search"
@@ -54,15 +56,19 @@ const Header = () => {
             value={inputVal}
             onChange={(e) => handleInputChange(e)}
           />
-          <Button variant="light" onClick={(e) => handleSubmit(e)}>
+          <Button
+            variant="light"
+            onClick={(e) => handleSubmit(e)}
+            className="mx-2"
+          >
             Search
           </Button>
-          <Button variant="light" onClick={handleRandomSearch}>
+          <Button variant="light" onClick={handleRandomSearch} className="mx-2">
             Random
           </Button>
-          <Button variant="light">
-            <Link to={`favorite`}>Favorite</Link>
-          </Button>
+          <Link to={`favorite`} className="btn btn-light mx-2">
+            Favorite
+          </Link>
         </Form>
       </Container>
     </Navbar>

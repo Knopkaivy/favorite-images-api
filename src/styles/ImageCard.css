@@ -25,8 +25,8 @@
 }
 .ImageCard__btnContainer {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 0.5rem;
+  right: 0.5rem;
   z-index: 3;
 }
 .ImageCard__btn {
@@ -37,9 +37,14 @@
   opacity: 0;
   transition: all 0.3s ease-out;
 }
+.ImageCard__btn:active,
+.ImageCard__btn:focus,
 .ImageCard__btn:hover {
-  transform: scale(1.5);
+  transform: scale(1.1);
+  opacity: 1;
 }
+.ImageCard:active .ImageCard__btn,
+.ImageCard:focus .ImageCard__btn,
 .ImageCard:hover .ImageCard__btn {
   opacity: 1;
 }
@@ -51,6 +56,11 @@
   z-index: 2;
   transition: all 0.3s ease;
 }
+.ImageCard:active .ImageCard__body,
+.ImageCard:focus .ImageCard__body,
 .ImageCard:hover .ImageCard__body {
   color: white !important;
+}
+.ImageCard__description:first-letter {
+  text-transform: uppercase;
 }

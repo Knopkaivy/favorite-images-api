@@ -1,6 +1,7 @@
 export const starterArr = [
   'Lviv',
   'Oregon',
+  'Portland',
   'Cannon Beach',
   'Paris',
   'Colorado',
@@ -11,8 +12,6 @@ export const starterArr = [
   'Dolores Park',
   'Yosemite',
   'Half Moon Bay',
-  'Mt Hood',
   'Estes Park',
   'Seattle',
-  'Wroclaw',
 ];
