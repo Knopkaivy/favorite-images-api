@@ -20,7 +20,6 @@ const ImageCard = ({ image }) => {
   }, [done]);
   const handleAddFavorite = (event) => {
     event.preventDefault();
-    console.log(image);
     dispatchFavorite({ type: 'added', image });
     setDone(true);
   };

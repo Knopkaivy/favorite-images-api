@@ -31,6 +31,10 @@ export function useFavoriteDispatch() {
 function favoriteReducer(favorite, action) {
   switch (action.type) {
     case 'added': {
+      if (favorite.includes(action.image)) {
+        alert('This image is already in your Favorite list');
+        return [...favorite];
+      }
       return [...favorite, action.image];
     }
     case 'removed': {
