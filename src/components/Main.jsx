@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { createApi } from 'unsplash-js';
 import { v4 as uuidv4 } from 'uuid';
+import Spinner from 'react-bootstrap/Spinner';
 import { useSearch } from '../SearchContext';
 import Container from 'react-bootstrap/Container';
 import Masonry from 'react-masonry-css';
@@ -83,6 +84,7 @@ const Main = () => {
     <div className="Main">
       <Container>
         <h1 className="Main__heading h2 mb-4">{search}</h1>
+
         <Masonry
           breakpointCols={breakpointColumnsObj}
           className="my-masonry-grid"
@@ -91,7 +93,18 @@ const Main = () => {
           {imageList}
           <div ref={observerTarget}></div>
         </Masonry>
-        {isLoading && <p className="Main__loader">Loading...</p>}
+        {isLoading && (
+          <div className="Main__spinner">
+            <Spinner
+              animation="border"
+              variant="secondary"
+              role="status"
+              className=""
+            >
+              <span className="visually-hidden">Loading...</span>
+            </Spinner>
+          </div>
+        )}
         {error && <p>Error: {error.message}</p>}
       </Container>
     </div>
