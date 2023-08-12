@@ -45,7 +45,7 @@ const ImageCard = ({ image }) => {
       target="_blank"
       rel="noopener noreferrer"
       className="ImageCard card mb-4"
-      aria-label="Image card. Open home location of image on Unsplash.com in a new tab"
+      aria-label={`Image card. ${image.alt_description}. Open home location of image on Unsplash.com in a new tab`}
     >
       <div className="ImageCard__overlay" aria-hidden="true"></div>
       <div className="ImageCard__btnContainer">
