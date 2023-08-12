@@ -7,6 +7,7 @@ import Form from 'react-bootstrap/Form';
 import Navbar from 'react-bootstrap/Navbar';
 import { useSearchDispatch } from '../SearchContext';
 import { starterArr } from '../starterSearch';
+import '../styles/Header.css';
 
 const Header = () => {
   const location = useLocation();
@@ -40,14 +41,13 @@ const Header = () => {
   };
 
   return (
-    <Navbar bg="light" expand="lg" fixed="top">
-      <Container>
-        {/* <Navbar.Brand href=""> */}
+    <Navbar className="Header" bg="light" expand="lg" fixed="top">
+      <Container className="Header__container">
         <Link to={`/`} className="navbar-brand px-2">
           Favorite Images API
         </Link>
-        {/* </Navbar.Brand>/ */}
-        <Form className="d-flex" onSubmit={(e) => handleSubmit(e)}>
+
+        <Form className="Header__form d-flex" onSubmit={(e) => handleSubmit(e)}>
           <Form.Control
             type="search"
             placeholder="Search"

@@ -57,3 +57,14 @@ input,
 button {
   border-radius: 2px !important;
 }
+
+@media only screen and (max-width: 991px) {
+  html {
+    font-size: 62.5%;
+  }
+}
+@media only screen and (max-width: 450px) {
+  html {
+    font-size: 50%;
+  }
+}

@@ -82,7 +82,7 @@ const Main = () => {
   return (
     <div className="Main">
       <Container>
-        <h1 className="h2 mb-4">{search}</h1>
+        <h1 className="Main__heading h2 mb-4">{search}</h1>
         <Masonry
           breakpointCols={breakpointColumnsObj}
           className="my-masonry-grid"
