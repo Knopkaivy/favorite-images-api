@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { createApi } from 'unsplash-js';
 import { v4 as uuidv4 } from 'uuid';
 import Masonry from 'react-masonry-css';
@@ -16,12 +16,16 @@ const api = createApi({
 
 const Main = () => {
   const observerTarget = useRef(null);
-  const [data, setPhotosResponse] = useState([]);
-  const [page, setPage] = useState(1);
+  const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const search = useSearch();
   const perPage = 20;
+
+  const page = useMemo(() => {
+    const newPage = Math.floor(data.length / perPage) + 1;
+    return newPage;
+  }, [data]);
 
   const fetchResults = async (q, action, p = page) => {
     setIsLoading(true);
@@ -33,10 +37,12 @@ const Main = () => {
         perPage,
       });
       const responseData = response.response.results;
-      if (action === 'add') {
-        setPhotosResponse((prevItems) => [...prevItems, ...responseData]);
+      if (action === 'add' && data.length > 0) {
+        if (data[data.length - perPage].id !== responseData[0].d) {
+          setData((prevItems) => [...prevItems, ...responseData]);
+        }
       } else {
-        setPhotosResponse([...responseData]);
+        setData([...responseData]);
       }
     } catch (error) {
       setError(error);
@@ -44,10 +50,6 @@ const Main = () => {
       setIsLoading(false);
     }
   };
-
-  useEffect(() => {
-    setPage(Math.floor(data.length / perPage) + 1);
-  }, [data]);
 
   useEffect(() => {
     fetchResults(search, 'new', 1);
