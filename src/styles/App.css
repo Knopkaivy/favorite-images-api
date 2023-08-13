@@ -6,9 +6,9 @@
 *,
 *::before,
 *::after {
+  box-sizing: inherit;
   margin: 0;
   padding: 0;
-  box-sizing: inherit;
 }
 *:focus {
   outline: 4px solid #f15906 !important;
@@ -16,27 +16,27 @@
 
 html {
   box-sizing: border-box;
-  width: 100%;
   height: 100%;
+  width: 100%;
 }
 body {
   font-family: 'Raleway', sans-serif;
+  height: 100%;
   line-height: 1.6;
   width: 100%;
-  height: 100%;
 }
 #root {
-  width: 100%;
   height: 100%;
+  width: 100%;
 }
 .App {
+  height: 100%;
   position: relative;
   width: 100%;
-  height: 100%;
 }
 a {
-  text-decoration: none;
   color: inherit;
+  text-decoration: none;
 }
 a:hover {
   color: inherit;
@@ -50,8 +50,8 @@ span {
   border-radius: 2px !important;
 }
 .card-img-top {
-  border-top-right-radius: 2px !important;
   border-top-left-radius: 2px !important;
+  border-top-right-radius: 2px !important;
 }
 input,
 button {

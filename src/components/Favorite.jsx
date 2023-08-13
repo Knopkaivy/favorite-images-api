@@ -1,9 +1,9 @@
 import React from 'react';
-import { useFavorite } from '../FavoriteContext';
 import Container from 'react-bootstrap/Container';
 import Masonry from 'react-masonry-css';
+import { useFavorite } from '../contexts/FavoriteContext';
 import ImageCard from './ImageCard';
-import { breakpointColumnsObj } from '../masonryBreakPoints';
+import { breakpointColumnsObj } from '../starters/masonryBreakPoints';
 import '../styles/masonry.css';
 import '../styles/Favorite.css';
 

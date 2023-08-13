@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useReducer } from 'react';
-import { starterArr } from './starterSearch';
+import { starterArr } from '../starters/starterSearch';
 
 const SearchContext = createContext(null);
 const SearchDispatchContext = createContext(null);

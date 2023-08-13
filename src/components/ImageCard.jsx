@@ -3,7 +3,7 @@ import { useLocation, Link } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import { FaCheck, FaPlus } from 'react-icons/fa';
 import { IoClose } from 'react-icons/io5';
-import { useFavoriteDispatch } from '../FavoriteContext';
+import { useFavoriteDispatch } from '../contexts/FavoriteContext';
 import '../styles/ImageCard.css';
 
 const ImageCard = ({ image }) => {

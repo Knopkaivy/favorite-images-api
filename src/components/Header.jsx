@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { useSearchDispatch } from '../SearchContext';
-import { starterArr } from '../starterSearch';
+import { useSearchDispatch } from '../contexts/SearchContext';
+import { starterArr } from '../starters/starterSearch';
 import '../styles/Header.css';
 
 const Header = () => {

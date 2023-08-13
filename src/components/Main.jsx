@@ -1,12 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { createApi } from 'unsplash-js';
 import { v4 as uuidv4 } from 'uuid';
-import Spinner from 'react-bootstrap/Spinner';
-import { useSearch } from '../SearchContext';
-import Container from 'react-bootstrap/Container';
 import Masonry from 'react-masonry-css';
+import Container from 'react-bootstrap/Container';
+import Spinner from 'react-bootstrap/Spinner';
+import { useSearch } from '../contexts/SearchContext';
 import ImageCard from './ImageCard';
-import { breakpointColumnsObj } from '../masonryBreakPoints';
+import { breakpointColumnsObj } from '../starters/masonryBreakPoints';
 import '../styles/masonry.css';
 import '../styles/Main.css';
 

@@ -1,9 +1,9 @@
 import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import ErrorPage from './error-page';
-import Root from './components/Root';
-import Main from './components/Main';
+import ErrorPage from './components/ErrorPage';
 import Favorite from './components/Favorite';
+import Main from './components/Main';
+import Root from './components/Root';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/App.css';
 
