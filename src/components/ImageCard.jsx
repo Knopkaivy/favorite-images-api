@@ -32,7 +32,7 @@ const ImageCard = ({ image }) => {
   const handleKeyDown = (event) => {
     if (event.key === 'Enter') {
       event.preventDefault();
-      if (event.target.id === 'btnAdd') {
+      if (event.target.className === 'ImageCard__btn') {
         handleAddFavorite(event);
       } else {
         handleRemoveFavorite(event);
@@ -61,7 +61,6 @@ const ImageCard = ({ image }) => {
           </button>
         ) : (
           <button
-            id="btnAdd"
             className="ImageCard__btn"
             onClick={(e) => handleAddFavorite(e)}
             onKeyDown={(e) => handleKeyDown(e)}

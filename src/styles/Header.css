@@ -1,6 +1,5 @@
 .Header {
   display: flex;
-  min-height: 4.4rem;
 }
 
 .Header__collapse {
