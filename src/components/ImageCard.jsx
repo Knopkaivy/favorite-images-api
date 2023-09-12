@@ -77,7 +77,6 @@ const ImageCard = ({ image }) => {
       <Card.Img
         variant="top"
         src={image.urls.small}
-        loading="lazy"
         className="ImageCard__img"
         alt={image.alt_description}
       />
